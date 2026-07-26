@@ -74,7 +74,7 @@ tasks:
   # Download de geteste HexTactics-deploy exact vanaf deze commit.
   - action: download_github
     src: Jv420/ht-srv-build
-    ref: fe18374cdcae5efb34812404d60ffc109f33dacb
+    ref: 60845a5d325ee36ebddf1488c8a1e406f0085d0e
     subpath: hextactics_deploy
     dest: ./tmp/hextactics_deploy
 
