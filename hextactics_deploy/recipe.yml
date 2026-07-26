@@ -71,11 +71,10 @@ tasks:
     src: ./tmp/ox_inventory.zip
     dest: ./resources/[ox]
 
-  # Download deze deploymap uit de HexTactics-repository.
-  # Deze branch-ref wordt na de eerste commit automatisch vastgezet op een commit-SHA.
+  # Download de geteste HexTactics-deploy exact vanaf deze commit.
   - action: download_github
     src: Jv420/ht-srv-build
-    ref: agent/hextactics-deploy
+    ref: fe18374cdcae5efb34812404d60ffc109f33dacb
     subpath: hextactics_deploy
     dest: ./tmp/hextactics_deploy
 
