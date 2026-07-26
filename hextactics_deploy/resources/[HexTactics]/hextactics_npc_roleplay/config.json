@@ -1,0 +1,18 @@
+{
+  "debug":false,"interactionDistance":3.2,"sessionDistance":7.5,"sessionSeconds":180,"profileMinutes":30,"requestCooldownMs":1000,"requireDuty":false,
+  "policeJobs":{"police":0,"sheriff":0,"marechaussee":0},
+  "ticketCatalog":{
+    "S001":{"label":"Geen geldig identiteitsbewijs","amount":110,"arrestable":false},
+    "V001":{"label":"Rijden zonder geldig rijbewijs","amount":430,"arrestable":true},
+    "V002":{"label":"Rijden zonder verzekering","amount":650,"arrestable":false},
+    "V003":{"label":"APK verlopen","amount":180,"arrestable":false},
+    "V004":{"label":"Motorrijtuigenbelasting verlopen","amount":250,"arrestable":false},
+    "V005":{"label":"Rijden onder invloed","amount":750,"arrestable":true},
+    "V006":{"label":"Roekeloos rijgedrag","amount":390,"arrestable":true},
+    "P001":{"label":"Bezit softdrugs boven gebruikershoeveelheid","amount":300,"arrestable":false},
+    "P002":{"label":"Bezit harddrugs","amount":900,"arrestable":true},
+    "P003":{"label":"Verboden wapenbezit","amount":1250,"arrestable":true},
+    "P004":{"label":"Niet voldoen aan bevel of vordering","amount":390,"arrestable":true},
+    "P005":{"label":"Openbare dronkenschap","amount":160,"arrestable":false}
+  }
+}
