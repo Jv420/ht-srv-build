@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Omkatgarage</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="panel">
+    <header>
+      <div class="brand">
+        <h1>HexTactics Omkatgarage</h1>
+        <p id="subtitle"></p>
+      </div>
+      <button id="close">Sluiten</button>
+    </header>
+    <main>
+      <div class="notice">Alle onderdelen, geld, afstand en voertuiggegevens worden opnieuw op de server gecontroleerd.</div>
+      <div class="grid">
+        <article class="card">
+          <h3>Nieuwe voertuigidentiteit</h3>
+          <p>Vervangt VIN, kenteken, sleutels en voertuigpapieren. Een bestaande tracker wordt verwijderd.</p>
+          <div class="actions"><button id="reidentity" class="danger">Omkatten</button></div>
+        </article>
+        <article class="card">
+          <h3>Trackerwerk</h3>
+          <p>Plaats als eigenaar een tracker of verwijder een aanwezige tracker met geschikt gereedschap.</p>
+          <div class="actions">
+            <button id="trackerAdd">Tracker toevoegen</button>
+            <button id="trackerRemove">Tracker verwijderen</button>
+          </div>
+        </article>
+      </div>
+    </main>
+  </section>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{
+  "location": {
+    "x": 2340.36,
+    "y": 3051.74,
+    "z": 48.15,
+    "heading": 90.0
+  },
+  "markerDistance": 25.0,
+  "interactDistance": 3.0,
+  "vehicleDistance": 8.0,
+  "operationDurationMs": 12000,
+  "rateLimitMs": 1500,
+  "price": 7500,
+  "moneyAccount": "money",
+  "allowPlayerVehicleTheft": false,
+  "blockedVehicleClasses": [
+    14,
+    15,
+    16,
+    18,
+    19,
+    21
+  ],
+  "requiredItems": {
+    "plate_blank": 1,
+    "vin_kit": 1,
+    "blank_key": 1,
+    "blank_vehicle_documents": 1
+  },
+  "tracker": {
+    "addItem": "vehicle_tracker",
+    "removeItem": "tracker_tool"
+  },
+  "documentItem": "vehicle_documents",
+  "ownedVehicles": {
+    "table": "owned_vehicles",
+    "ownerColumn": "owner",
+    "plateColumn": "plate",
+    "vehicleColumn": "vehicle",
+    "typeColumn": "type",
+    "storedColumn": "stored"
+  }
+}

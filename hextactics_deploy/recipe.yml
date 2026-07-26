@@ -1,0 +1,121 @@
+$engine: 3
+$onesync: 'on'
+
+name: HexTactics Delfzijl
+version: 1.0.0
+author: HexTactics
+description: ESX Legacy basis met ox, Nederlandse Vehicle Suite, RDW, beveiligde NPC-roleplay en een LC Fuel-brug.
+
+tasks:
+  # Database als eerste, zodat de deployer vroeg stopt bij onjuiste gegevens.
+  - action: connect_database
+
+  # Cfx-defaultresources, vastgezet op een bekende commit.
+  - action: download_github
+    src: citizenfx/cfx-server-data
+    ref: e265cb251c88260533c847d4a1a2838c7d828a66
+    subpath: resources
+    dest: ./resources
+
+  # Gebruik de actuele system-chat van FXServer in plaats van de oude resource.
+  - action: remove_path
+    path: ./resources/[gameplay]/chat
+
+  # ESX Legacy core, vastgezet op een bekende commit.
+  - action: download_github
+    src: esx-framework/esx_core
+    ref: 220a1bf0284c082c0956a423aacba8f1aed1ee10
+    dest: ./tmp/esx_core
+
+  - action: query_database
+    file: ./tmp/esx_core/[SQL]/legacy.sql
+
+  - action: move_path
+    src: ./tmp/esx_core/[core]
+    dest: ./resources/[core]
+    overwrite: true
+
+  # ox_inventory vervangt de standaard ESX-inventory.
+  - action: remove_path
+    path: ./resources/[core]/esx_inventory
+
+  # oxmysql v2.14.1.
+  - action: download_file
+    url: https://github.com/overextended/oxmysql/releases/download/v2.14.1/oxmysql.zip
+    path: ./tmp/oxmysql.zip
+
+  - action: unzip
+    src: ./tmp/oxmysql.zip
+    dest: ./resources/[ox]
+
+  # ox_lib v3.35.0.
+  - action: download_file
+    url: https://github.com/overextended/ox_lib/releases/download/v3.35.0/ox_lib.zip
+    path: ./tmp/ox_lib.zip
+
+  - action: unzip
+    src: ./tmp/ox_lib.zip
+    dest: ./resources/[ox]
+
+  # ox_target v1.18.1.
+  - action: download_file
+    url: https://github.com/overextended/ox_target/releases/download/v1.18.1/ox_target.zip
+    path: ./tmp/ox_target.zip
+
+  - action: unzip
+    src: ./tmp/ox_target.zip
+    dest: ./resources/[ox]
+
+  # ox_inventory v2.47.1.
+  - action: download_file
+    url: https://github.com/overextended/ox_inventory/releases/download/v2.47.1/ox_inventory.zip
+    path: ./tmp/ox_inventory.zip
+
+  - action: unzip
+    src: ./tmp/ox_inventory.zip
+    dest: ./resources/[ox]
+
+  # Download de geteste HexTactics-deploy exact vanaf deze commit.
+  - action: download_github
+    src: Jv420/ht-srv-build
+    ref: 04508c1ad61ed3a5a7e06b0f07b747d576ff9e8f
+    subpath: hextactics_deploy
+    dest: ./tmp/hextactics_deploy
+
+  - action: move_path
+    src: ./tmp/hextactics_deploy/resources/[HexTactics]
+    dest: ./resources/[HexTactics]
+    overwrite: true
+
+  - action: query_database
+    file: ./tmp/hextactics_deploy/installer/database.sql
+
+  - action: query_database
+    file: ./tmp/hextactics_deploy/installer/optional_rdw_job.sql
+
+  # Voeg de benodigde HexTactics-items bovenaan de ox_inventory-itemtabel toe.
+  - action: replace_string
+    file: ./resources/[ox]/ox_inventory/data/items.lua
+    search: 'return {'
+    replace: |-
+      return {
+          ['plate_blank'] = { label = 'Blanco kentekenplaat', weight = 800, stack = true, close = true, description = 'Onbedrukte plaat voor voertuigregistratie.' },
+          ['vin_kit'] = { label = 'VIN-omkatset', weight = 1200, stack = true, close = true, description = 'Gereedschap en slagletters voor een voertuigidentiteit.' },
+          ['blank_key'] = { label = 'Blanco autosleutel', weight = 80, stack = true, close = true, description = 'Programmeerbare sleutel zonder voertuigkoppeling.' },
+          ['blank_vehicle_documents'] = { label = 'Blanco voertuigpapieren', weight = 50, stack = true, close = true, description = 'Onbedrukte documenten voor een voertuigregistratie.' },
+          ['vehicle_documents'] = { label = 'Voertuigpapieren', weight = 50, stack = false, close = true, description = 'Officiële voertuigpapieren met kenteken- en VIN-gegevens.' },
+          ['vehicle_tracker'] = { label = 'Voertuigtracker', weight = 250, stack = true, close = true, description = 'GPS-tracker voor een voertuig.' },
+          ['tracker_tool'] = { label = 'Trackerdetector', weight = 650, stack = false, close = true, description = 'Detector en gereedschap om trackers te verwijderen.' },
+
+  - action: move_path
+    src: ./tmp/hextactics_deploy/server.cfg
+    dest: ./server.cfg
+    overwrite: true
+
+  - action: copy_path
+    src: ./tmp/hextactics_deploy/installer/LC_FUEL_INSTALLATIE.md
+    dest: ./LC_FUEL_INSTALLATIE.md
+    overwrite: true
+
+  - action: remove_path
+    path: ./tmp
