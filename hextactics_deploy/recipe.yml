@@ -13,7 +13,10 @@ tasks:
     src: citizenfx/cfx-server-data
     ref: e265cb251c88260533c847d4a1a2838c7d828a66
     subpath: resources
-    dest: ./resources/[cfx-default]
+    dest: ./resources
+
+  - action: remove_path
+    path: ./resources/[gameplay]/chat
 
   - action: download_github
     src: esx-framework/esx_core
@@ -65,7 +68,7 @@ tasks:
 
   - action: download_github
     src: Jv420/ht-srv-build
-    ref: agent/hextactics-deploy-v1
+    ref: b4f780af50cf893563acd3ea0695c38cb0665909
     subpath: hextactics_deploy
     dest: ./tmp/hextactics_deploy
 
