@@ -1,0 +1,12 @@
+{
+  "defaultKey": "L",
+  "menuCommand": "autosleutels",
+  "maxVehicleDistance": 7.0,
+  "giveKeyDistance": 4.0,
+  "rateLimitMs": 900,
+  "ownedVehicles": {
+    "table": "owned_vehicles",
+    "ownerColumn": "owner",
+    "plateColumn": "plate"
+  }
+}

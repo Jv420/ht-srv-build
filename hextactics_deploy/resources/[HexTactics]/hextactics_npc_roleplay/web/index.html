@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HexTactics NPC-controle</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="panel" class="panel hidden" aria-hidden="true">
+    <header>
+      <div>
+        <p class="eyebrow">DELFZIJL | HEXTACTICS</p>
+        <h1 id="title">NPC politiecontrole</h1>
+        <p id="subtitle">Identiteit nog niet vastgesteld</p>
+      </div>
+      <button id="close" class="icon-button" aria-label="Sluiten">×</button>
+    </header>
+
+    <section class="status-row">
+      <span id="arrest-status" class="status">Niet aangehouden</span>
+      <span id="escort-status" class="status">Geen escort</span>
+    </section>
+
+    <section class="actions" id="actions">
+      <button data-action="identity">Identiteit controleren</button>
+      <button data-action="license">Rijbewijs controleren</button>
+      <button data-action="wanted">Signaleringen controleren</button>
+      <button data-action="vehicle">Kenteken en voertuig</button>
+      <button data-action="breathalyzer">Alcohol- en drugstest</button>
+      <button data-action="frisk">Fouilleren</button>
+      <button data-action="warn">Officiële waarschuwing</button>
+      <button id="ticket-button">Boete uitschrijven</button>
+      <button data-action="arrest" class="danger">Aanhouden</button>
+      <button data-action="escort" class="secondary">Escort starten/stoppen</button>
+      <button data-action="release" class="secondary">Vrijlaten en afronden</button>
+    </section>
+
+    <section id="ticket-panel" class="ticket-panel hidden">
+      <label for="ticket-select">Feitcode</label>
+      <select id="ticket-select"></select>
+      <div class="ticket-controls">
+        <button id="ticket-confirm">Boete bevestigen</button>
+        <button id="ticket-cancel" class="secondary">Annuleren</button>
+      </div>
+    </section>
+
+    <section id="result" class="result">
+      <h2>Controle</h2>
+      <p>Selecteer een handeling.</p>
+    </section>
+
+    <footer>ALT + E of /npccontrole · Alle uitkomsten worden server-side gecontroleerd</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
