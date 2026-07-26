@@ -15,7 +15,11 @@ tasks:
     src: citizenfx/cfx-server-data
     ref: e265cb251c88260533c847d4a1a2838c7d828a66
     subpath: resources
-    dest: ./resources/[cfx-default]
+    dest: ./resources
+
+  # Gebruik de actuele system-chat van FXServer in plaats van de oude resource.
+  - action: remove_path
+    path: ./resources/[gameplay]/chat
 
   # ESX Legacy core, vastgezet op een bekende commit.
   - action: download_github
@@ -74,7 +78,7 @@ tasks:
   # Download de geteste HexTactics-deploy exact vanaf deze commit.
   - action: download_github
     src: Jv420/ht-srv-build
-    ref: 60845a5d325ee36ebddf1488c8a1e406f0085d0e
+    ref: 04508c1ad61ed3a5a7e06b0f07b747d576ff9e8f
     subpath: hextactics_deploy
     dest: ./tmp/hextactics_deploy
 
