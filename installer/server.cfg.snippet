@@ -1,0 +1,32 @@
+# HexTactics - aanbevolen laadvolgorde
+ensure oxmysql
+ensure ox_lib
+ensure es_extended
+ensure ox_inventory
+ensure ox_target
+
+ensure hextactics_core
+ensure ht_vehiclekeys
+ensure ht_rdw
+ensure esx_rdw
+ensure ht_chopshop
+ensure ht_customdealer
+
+# Interne ESX-compatibiliteit voor jobvoertuigen; publieke dealer is uitgeschakeld.
+ensure esx_vehicleshop
+
+# Gekozen openbare garage.
+ensure esx_garage
+
+# Bestaande systemen die nu hetzelfde voertuigregister gebruiken.
+ensure esx_billing
+ensure esx_speedcamera
+ensure hextactics_adminmenu
+
+# Daarna overige voertuig- en jobresources.
+ensure esx_lscustom
+ensure esx_ambulancejob
+ensure esx_policejob
+
+# Aanbevolen voor servergestuurde statebags.
+set sv_stateBagStrictMode true

@@ -1,0 +1,48 @@
+{
+  "location": {
+    "x": 917.72,
+    "y": -1517.36,
+    "z": 30.02,
+    "heading": 87.0
+  },
+  "markerDistance": 25.0,
+  "interactDistance": 3.0,
+  "vehicleDistance": 8.0,
+  "rateLimitMs": 1200,
+  "staffJobs": [
+    "rdw"
+  ],
+  "apkRequiresStaff": true,
+  "apkDurationMs": 10000,
+  "apkPrice": 350,
+  "apkValidityMonths": 12,
+  "insurancePrice": 900,
+  "insuranceValidityDays": 30,
+  "registrationPrice": 250,
+  "moneyAccount": "bank",
+  "inspectionThresholds": {
+    "engineHealth": 650.0,
+    "bodyHealth": 650.0,
+    "tankHealth": 650.0
+  },
+  "fines": {
+    "checkIntervalMs": 60000,
+    "cooldownMinutes": 360,
+    "apkExpired": 750,
+    "noInsurance": 1000,
+    "autoCharge": false
+  },
+  "documentItem": "vehicle_documents",
+  "ownedVehicles": {
+    "table": "owned_vehicles",
+    "ownerColumn": "owner",
+    "plateColumn": "plate",
+    "vehicleColumn": "vehicle"
+  },
+  "lookupCommand": "kentekencheck",
+  "lookupJobs": [
+    "rdw",
+    "police",
+    "sheriff"
+  ]
+}
