@@ -4,7 +4,7 @@ lua54 'yes'
 
 name 'hextactics_startup_check'
 author 'HexTactics'
-description 'Controleert de gekozen Delfzijl HexTactics basis en meldt resourceconflicten'
-version '1.0.0'
+description 'Controleert ESX Legacy, ACE-rechten, LC Fuel, HexTactics-resources en conflicterende gamemodes.'
+version '1.1.0'
 
 server_script 'server/main.lua'

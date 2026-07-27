@@ -1,0 +1,184 @@
+$engine: 3
+$onesync: 'on'
+
+name: Delfzijl | HexTactics Crime Edition
+author: HexTactics
+version: 1.0.2
+description: Geoptimaliseerde ESX Crime Edition voor maximaal 20 spelers met beveiligde joinflow, Vehicle Suite, overvallen, smokkel, gangs, zwarte markt, bewijs en gevangenis.
+
+tasks:
+  - action: connect_database
+
+  - action: download_github
+    src: citizenfx/cfx-server-data
+    ref: e265cb251c88260533c847d4a1a2838c7d828a66
+    subpath: resources
+    dest: ./resources
+
+  - action: remove_path
+    path: ./resources/[managers]/mapmanager
+
+  - action: remove_path
+    path: ./resources/[gamemodes]/basic-gamemode
+
+  - action: remove_path
+    path: ./resources/[gamemodes]/[maps]/fivem-map-skater
+
+  - action: download_github
+    src: esx-framework/esx_core
+    ref: 220a1bf0284c082c0956a423aacba8f1aed1ee10
+    dest: ./tmp/esx_core
+
+  - action: query_database
+    file: ./tmp/esx_core/[SQL]/legacy.sql
+
+  - action: move_path
+    src: ./tmp/esx_core/[core]
+    dest: ./resources/[core]
+    overwrite: true
+
+  - action: remove_path
+    path: ./resources/[core]/esx_inventory
+
+  - action: download_file
+    url: https://github.com/overextended/oxmysql/releases/download/v2.14.1/oxmysql.zip
+    path: ./tmp/oxmysql.zip
+
+  - action: unzip
+    src: ./tmp/oxmysql.zip
+    dest: ./resources/[ox]
+
+  - action: download_file
+    url: https://github.com/overextended/ox_lib/releases/download/v3.35.0/ox_lib.zip
+    path: ./tmp/ox_lib.zip
+
+  - action: unzip
+    src: ./tmp/ox_lib.zip
+    dest: ./resources/[ox]
+
+  - action: download_file
+    url: https://github.com/overextended/ox_target/releases/download/v1.18.1/ox_target.zip
+    path: ./tmp/ox_target.zip
+
+  - action: unzip
+    src: ./tmp/ox_target.zip
+    dest: ./resources/[ox]
+
+  - action: download_file
+    url: https://github.com/overextended/ox_inventory/releases/download/v2.47.1/ox_inventory.zip
+    path: ./tmp/ox_inventory.zip
+
+  - action: unzip
+    src: ./tmp/ox_inventory.zip
+    dest: ./resources/[ox]
+
+  - action: download_file
+    url: https://github.com/overextended/ox_doorlock/releases/download/v1.22.1/ox_doorlock.zip
+    path: ./tmp/ox_doorlock.zip
+
+  - action: unzip
+    src: ./tmp/ox_doorlock.zip
+    dest: ./resources/[ox]
+
+  - action: download_github
+    src: Bob74/bob74_ipl
+    ref: c229e65d6cd7bbe3942c619c12d8197f89247762
+    dest: ./resources/[standalone]/bob74_ipl
+
+  - action: download_github
+    src: Jv420/ht-srv-build
+    ref: 3a6be4bb799c4363788037669260416eb588b744
+    subpath: hextactics_deploy
+    dest: ./tmp/hextactics_base
+
+  - action: move_path
+    src: ./tmp/hextactics_base/resources/[HexTactics]
+    dest: ./resources/[HexTactics]
+    overwrite: true
+
+  - action: query_database
+    file: ./tmp/hextactics_base/installer/database.sql
+
+  - action: query_database
+    file: ./tmp/hextactics_base/installer/optional_rdw_job.sql
+
+  - action: download_github
+    src: Jv420/ht-srv-build
+    ref: 3a6be4bb799c4363788037669260416eb588b744
+    subpath: hextactics_crime_deploy
+    dest: ./tmp/hextactics_crime
+
+  - action: move_path
+    src: ./tmp/hextactics_crime/resources/[HexTactics-Crime]
+    dest: ./resources/[HexTactics-Crime]
+    overwrite: true
+
+  - action: query_database
+    file: ./tmp/hextactics_crime/installer/database.sql
+
+  - action: replace_string
+    file: ./resources/[ox]/ox_inventory/data/items.lua
+    search: 'return {'
+    replace: |-
+      return {
+          ['plate_blank'] = { label = 'Blanco kentekenplaat', weight = 800, stack = true, close = true, description = 'Onbedrukte plaat voor voertuigregistratie.' },
+          ['vin_kit'] = { label = 'VIN-omkatset', weight = 1200, stack = true, close = true, description = 'Gereedschap en slagletters voor een voertuigidentiteit.' },
+          ['blank_key'] = { label = 'Blanco autosleutel', weight = 80, stack = true, close = true, description = 'Programmeerbare sleutel zonder voertuigkoppeling.' },
+          ['blank_vehicle_documents'] = { label = 'Blanco voertuigpapieren', weight = 50, stack = true, close = true, description = 'Onbedrukte documenten voor een voertuigregistratie.' },
+          ['vehicle_documents'] = { label = 'Voertuigpapieren', weight = 50, stack = false, close = true, description = 'Officiele voertuigpapieren met kenteken- en VIN-gegevens.' },
+          ['vehicle_tracker'] = { label = 'Voertuigtracker', weight = 250, stack = true, close = true, description = 'GPS-tracker voor een voertuig.' },
+          ['tracker_tool'] = { label = 'Trackerdetector', weight = 650, stack = false, close = true, description = 'Detector en gereedschap om trackers te verwijderen.' },
+          ['lockpick'] = { label = 'Lockpick', weight = 100, stack = true, close = true, description = 'Eenvoudig gereedschap voor een voertuigdeur of slot.' },
+          ['advanced_lockpick'] = { label = 'Geavanceerde lockpick', weight = 180, stack = true, close = true },
+          ['hacking_device'] = { label = 'Hackapparaat', weight = 850, stack = false, close = true },
+          ['drill'] = { label = 'Compacte boor', weight = 2500, stack = false, close = true },
+          ['crowbar'] = { label = 'Koevoet', weight = 1800, stack = false, close = true },
+          ['burner_phone'] = { label = 'Wegwerptelefoon', weight = 120, stack = true, close = true },
+          ['radio_scanner'] = { label = 'Politiescanner', weight = 650, stack = false, close = true },
+          ['plate_press'] = { label = 'Kentekenpers', weight = 3500, stack = false, close = true },
+          ['tracker_scrambler'] = { label = 'Trackerstoorzender', weight = 800, stack = false, close = true },
+          ['wire_cutter'] = { label = 'Industriele kniptang', weight = 1400, stack = false, close = true },
+          ['crime_gloves'] = { label = 'Forensische handschoenen', weight = 100, stack = true, close = true },
+          ['marked_bills'] = { label = 'Gemarkeerde bankbiljetten', weight = 1, stack = true, close = false },
+          ['black_money'] = { label = 'Zwart geld', weight = 0, stack = true, close = false },
+          ['stolen_electronics'] = { label = 'Gestolen elektronica', weight = 900, stack = true, close = false },
+          ['stolen_jewelry'] = { label = 'Gestolen sieraden', weight = 250, stack = true, close = false },
+          ['stolen_art'] = { label = 'Gestolen kunstobject', weight = 2200, stack = true, close = false },
+          ['vehicle_ecu'] = { label = 'Gestolen voertuig-ECU', weight = 1200, stack = true, close = false },
+          ['catalytic_converter'] = { label = 'Katalysator', weight = 4200, stack = true, close = false },
+          ['contraband_crate'] = { label = 'Verzegelde smokkelkist', weight = 8000, stack = false, close = false },
+          ['plant_cuttings'] = { label = 'Plantenstekken', weight = 100, stack = true, close = false },
+          ['chemical_supplies'] = { label = 'Chemische benodigdheden', weight = 750, stack = true, close = false, description = 'Fictieve roleplay-grondstoffen.' },
+          ['empty_baggies'] = { label = 'Lege gripzakjes', weight = 5, stack = true, close = false },
+          ['weed_bag'] = { label = 'Zakje cannabis', weight = 50, stack = true, close = false },
+          ['coke_bag'] = { label = 'Zakje importwaar', weight = 50, stack = true, close = false },
+          ['meth_bag'] = { label = 'Zakje synthetische waar', weight = 50, stack = true, close = false },
+          ['metal_scrap'] = { label = 'Metaalschroot', weight = 300, stack = true, close = false },
+          ['plastic'] = { label = 'Kunststofdelen', weight = 100, stack = true, close = false },
+          ['electronic_parts'] = { label = 'Elektronische onderdelen', weight = 120, stack = true, close = false },
+          ['usb_crypto'] = { label = 'Versleutelde USB-stick', weight = 20, stack = true, close = false },
+          ['evidence_bag'] = { label = 'Lege bewijszak', weight = 20, stack = true, close = true },
+          ['sealed_evidence'] = { label = 'Verzegeld bewijs', weight = 100, stack = false, close = true },
+
+  - action: move_path
+    src: ./tmp/hextactics_crime/server.cfg
+    dest: ./server.cfg
+    overwrite: true
+
+  - action: copy_path
+    src: ./tmp/hextactics_crime/INSTALLATIE_NITRADO.md
+    dest: ./INSTALLATIE_NITRADO_CRIME.md
+    overwrite: true
+
+  - action: copy_path
+    src: ./tmp/hextactics_crime/THIRD_PARTY.md
+    dest: ./THIRD_PARTY_CRIME.md
+    overwrite: true
+
+  - action: copy_path
+    src: ./tmp/hextactics_crime/SECURITY.md
+    dest: ./SECURITY_CRIME.md
+    overwrite: true
+
+  - action: remove_path
+    path: ./tmp
