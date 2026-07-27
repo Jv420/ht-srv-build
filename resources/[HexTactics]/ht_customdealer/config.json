@@ -1,0 +1,67 @@
+{
+  "location": {
+    "x": -773.14,
+    "y": -233.21,
+    "z": 37.08
+  },
+  "spawn": {
+    "x": -763.86,
+    "y": -239.73,
+    "z": 36.98,
+    "heading": 205.0
+  },
+  "markerDistance": 30.0,
+  "interactDistance": 3.0,
+  "rateLimitMs": 1500,
+  "moneyAccount": "bank",
+  "testDriveSeconds": 60,
+  "documentItem": "vehicle_documents",
+  "blip": {
+    "enabled": true,
+    "sprite": 326,
+    "color": 3,
+    "scale": 0.8,
+    "name": "HexTactics Autoverkoop"
+  },
+  "vehicles": [
+    {
+      "model": "asea",
+      "label": "Declasse Asea",
+      "price": 18500
+    },
+    {
+      "model": "tailgater",
+      "label": "Obey Tailgater",
+      "price": 42000
+    },
+    {
+      "model": "sultan",
+      "label": "Karin Sultan",
+      "price": 55000
+    },
+    {
+      "model": "buffalo",
+      "label": "Bravado Buffalo",
+      "price": 68000
+    },
+    {
+      "model": "baller",
+      "label": "Gallivanter Baller",
+      "price": 79000
+    },
+    {
+      "model": "speedo",
+      "label": "Vapid Speedo",
+      "price": 45000
+    }
+  ],
+  "ownedVehicles": {
+    "table": "owned_vehicles",
+    "ownerColumn": "owner",
+    "plateColumn": "plate",
+    "vehicleColumn": "vehicle",
+    "typeColumn": "type",
+    "storedColumn": "stored"
+  },
+  "plateIndex": 1
+}

@@ -1,0 +1,27 @@
+# FiveM runtime and local server data
+cache/
+crashes/
+logs/
+txData/
+server.cfg
+
+# Secrets and local environment files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets.*
+
+# Database/runtime output
+*.sqlite
+*.db
+*.log
+
+# Archives and temporary files
+*.zip
+*.7z
+*.rar
+*.tmp
+.DS_Store
+Thumbs.db

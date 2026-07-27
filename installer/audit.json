@@ -1,0 +1,22 @@
+{
+  "info": [
+    "Resources: 133",
+    "Strikte JSON-bestanden gecontroleerd: 322; JSONC tsconfig overgeslagen: 9",
+    "Custom JavaScript-bestanden gecontroleerd: 8",
+    "ox_inventory-items gevonden: 213 uniek: 213"
+  ],
+  "warnings": [
+    "ht_vehiclekeys vereist externe gratis dependency oxmysql; installer is meegeleverd",
+    "ht_chopshop vereist externe gratis dependency oxmysql; installer is meegeleverd",
+    "ht_rdw vereist externe gratis dependency oxmysql; installer is meegeleverd",
+    "ht_customdealer vereist externe gratis dependency oxmysql; installer is meegeleverd"
+  ],
+  "errors": [],
+  "additional_checks": {
+    "lua54_files_checked": 15,
+    "new_javascript_files_checked": 8,
+    "valid_discord_webhooks_remaining": 0,
+    "deleted_vehicle_resource_code_references": 0,
+    "live_fxserver_tested": false
+  }
+}
