@@ -3,8 +3,8 @@ $onesync: 'on'
 
 name: Delfzijl | HexTactics Crime Edition
 author: HexTactics
-version: 1.0.1
-description: Geoptimaliseerde ESX Crime Edition voor maximaal 20 spelers met Vehicle Suite, overvallen, smokkel, gangs, zwarte markt, bewijs en gevangenis.
+version: 1.0.2
+description: Geoptimaliseerde ESX Crime Edition voor maximaal 20 spelers met beveiligde joinflow, Vehicle Suite, overvallen, smokkel, gangs, zwarte markt, bewijs en gevangenis.
 
 tasks:
   - action: connect_database
@@ -14,6 +14,15 @@ tasks:
     ref: e265cb251c88260533c847d4a1a2838c7d828a66
     subpath: resources
     dest: ./resources
+
+  - action: remove_path
+    path: ./resources/[managers]/mapmanager
+
+  - action: remove_path
+    path: ./resources/[gamemodes]/basic-gamemode
+
+  - action: remove_path
+    path: ./resources/[gamemodes]/[maps]/fivem-map-skater
 
   - action: download_github
     src: esx-framework/esx_core
@@ -78,7 +87,7 @@ tasks:
 
   - action: download_github
     src: Jv420/ht-srv-build
-    ref: 4d414d1482a5108528b897f4cab4a6b6d80e6900
+    ref: 3a6be4bb799c4363788037669260416eb588b744
     subpath: hextactics_deploy
     dest: ./tmp/hextactics_base
 
@@ -95,7 +104,7 @@ tasks:
 
   - action: download_github
     src: Jv420/ht-srv-build
-    ref: c352fbb1679ef4c4f7cdf5dd5d7d763c4fff3d9e
+    ref: 3a6be4bb799c4363788037669260416eb588b744
     subpath: hextactics_crime_deploy
     dest: ./tmp/hextactics_crime
 
