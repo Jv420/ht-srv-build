@@ -3,7 +3,7 @@ $onesync: 'on'
 
 name: Delfzijl | HexTactics Crime Edition
 author: HexTactics
-version: 1.0.0
+version: 1.0.1
 description: Geoptimaliseerde ESX Crime Edition voor maximaal 20 spelers met Vehicle Suite, overvallen, smokkel, gangs, zwarte markt, bewijs en gevangenis.
 
 tasks:
@@ -95,7 +95,7 @@ tasks:
 
   - action: download_github
     src: Jv420/ht-srv-build
-    ref: 36b7b622638223bbb0a601387a40872407771094
+    ref: c352fbb1679ef4c4f7cdf5dd5d7d763c4fff3d9e
     subpath: hextactics_crime_deploy
     dest: ./tmp/hextactics_crime
 
